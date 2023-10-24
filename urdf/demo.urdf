@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<robot name="demo">
+  <!-- ======================================================== -->
+  <!-- link -->
+  <!-- ======================================================== -->
+  <link name="base_link"/>
+  <link name="demo_link">
+    <inertial>
+      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.002689"/>
+      <mass value="9.815083"/>
+      <inertia 
+        ixx=" 0.337668" 
+        iyy=" 0.337668" 
+        izz=" 0.612925" 
+        ixy=" 0.000000" 
+        ixz=" 0.000000"  
+        iyz=" 0.000000"/>
+    </inertial>
+    <visual>
+      <origin rpy="0.000000 0.000000 0.000000" xyz="0.000000 0.000000 0.000000"/>
+      <geometry>
+        <mesh filename="package://urdf_demo/meshes/demo_link.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+  </link>
+
+慣性矩: ( 公斤 * 平方米 )
+取於質量中心，並且對正輸出的座標系統。
+	Lxx = 0.337668	Lxy = 0.000000	Lxz = 0.000026
+	Lyx = 0.000000	Lyy = 0.337668	Lyz = 0.000000
+	Lzx = 0.000026	Lzy = 0.000000	Lzz = 0.612925
+
+慣性張量: ( 公斤 * 平方米 )
+由輸出座標系統決定。
+	Ixx = 0.337739	Ixy = 0.000000	Ixz = 0.000026
+	Iyx = 0.000000	Iyy = 0.337739	Iyz = 0.000000
+	Izx = 0.000026	Izy = 0.000000	Izz = 0.612925
+  <!-- ======================================================== -->
+  <!-- joint -->
+  <!-- ======================================================== -->
+  <joint name="my_joint" type="continuous">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="demo_link"/>
+    <axis xyz="0 0 1" />
+  </joint>
+</robot>
